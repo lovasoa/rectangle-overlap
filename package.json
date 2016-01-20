@@ -1,0 +1,26 @@
+{
+  "name": "rectangle-overlap",
+  "version": "1.0.0",
+  "description": "Computes the area of the intersection of two rectangles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lovasoa/rectangle-overlap.git"
+  },
+  "keywords": [
+    "rectangle",
+    "overlap",
+    "area",
+    "difference",
+    "geometry"
+  ],
+  "author": "Ophir LOJKINE",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/lovasoa/rectangle-overlap/issues"
+  },
+  "homepage": "https://github.com/lovasoa/rectangle-overlap"
+}
