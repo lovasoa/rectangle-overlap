@@ -8,7 +8,7 @@
     "check-workspace": "git diff --exit-code >/dev/null && git diff --cached --exit-code >/dev/null",
     "build": "rm -rf dist/ && npm run compile && cp LICENSE README.md package.json dist/",
     "compile": "tsc --project .",
-    "test": "npx tslint --project .",
+    "test": "npx tslint --project . && npx jest",
     "prepublish": "echo 'Use npm run publish-package' && exit 1",
     "publish-package": "npm run check-workspace && npm test && npm run build && git push && git push --tags && npm publish --access=public --ignore-scripts dist"
   },
@@ -31,7 +31,13 @@
   },
   "homepage": "https://github.com/lovasoa/rectangle-overlap",
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
     "tslint": "^5.18.0",
     "typescript": "^3.5.2"
+  },
+  "jest": {
+    "preset": "ts-jest"
   }
 }
