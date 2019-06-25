@@ -13,5 +13,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  }
+  },
+  "include": [
+    "index.ts"
+  ]
 }
