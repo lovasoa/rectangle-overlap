@@ -8,9 +8,9 @@
     "check-workspace": "git diff --exit-code >/dev/null && git diff --cached --exit-code >/dev/null",
     "build": "rm -rf dist/ && npm run compile && cp LICENSE README.md package.json dist/",
     "compile": "tsc --project .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx tslint --project .",
     "prepublish": "echo 'Use npm run publish-package' && exit 1",
-    "publish-package": "npm run check-workspace && npm run build && git push && git push --tags && npm publish --access=public --ignore-scripts dist"
+    "publish-package": "npm run check-workspace && npm test && npm run build && git push && git push --tags && npm publish --access=public --ignore-scripts dist"
   },
   "repository": {
     "type": "git",
