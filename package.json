@@ -2,7 +2,8 @@
   "name": "rectangle-overlap",
   "version": "1.0.0",
   "description": "Computes the area of the intersection of two rectangles.",
-  "main": "index.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "check-workspace": "git diff --exit-code >/dev/null && git diff --cached --exit-code >/dev/null",
     "build": "rm -rf dist/ && npm run compile && cp LICENSE README.md package.json dist/",
