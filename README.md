@@ -1,7 +1,7 @@
 # rectangle-overlap
 
 [![npm type definitions](https://img.shields.io/npm/types/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/index.ts)
-[![npm type definitions](https://img.shields.io/npm/l/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/LICENSE)
+[![License](https://img.shields.io/npm/l/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/LICENSE)
 
 Fastly compute the area of the intersection of two rectangles.
 
