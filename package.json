@@ -20,7 +20,8 @@
     "overlap",
     "area",
     "difference",
-    "geometry"
+    "geometry",
+    "intersection"
   ],
   "author": "Ophir LOJKINE",
   "license": "GPLv2",
