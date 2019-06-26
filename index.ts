@@ -1,16 +1,49 @@
-export = (
-  x1: number, y1: number, w1: number, h1: number,
-  x2: number, y2: number, w2: number, h2: number,
-): null | number => {
-  const dx = (x1 < x2) ? x1 + w1 - x2 : x2 + w2 - x1;
-  if (dx < 0) {
+export = (rectangle1: IRectangle, rectangle2: IRectangle): null | Rectangle => {
+  const intersectionX1 = Math.max(rectangle1.x, rectangle2.x);
+  const intersectionX2 = Math.min(rectangle1.x + rectangle1.width, rectangle2.x + rectangle2.width);
+  if (intersectionX2 < intersectionX1) {
     return null;
   }
 
-  const dy = (y1 < y2) ? y1 + h1 - y2 : y2 + h2 - y1;
-  if (dy < 0) {
+  const intersectionY1 = Math.max(rectangle1.y, rectangle2.y);
+  const intersectionY2 = Math.min(rectangle1.y + rectangle1.height, rectangle2.y + rectangle2.height);
+  if (intersectionY2 < intersectionY1) {
     return null;
   }
 
-  return dx * dy;
+  return new Rectangle(
+    intersectionX1,
+    intersectionY1,
+    intersectionX2 - intersectionX1,
+    intersectionY2 - intersectionY1,
+  );
 };
+
+interface IRectangle {
+  readonly x: number;
+  readonly y: number;
+  readonly width: number;
+  readonly height: number;
+}
+
+class Rectangle implements IRectangle {
+  constructor(
+    public readonly x: number,
+    public readonly y: number,
+    public readonly width: number,
+    public readonly height: number,
+  ) {
+    if (typeof process === "object" && process && process.env && process.env.NODE_ENV !== "production") {
+      if (width < 0) {
+        throw new TypeError(`The rectangle width must be a non-negative number, ${width} was provided`);
+      }
+      if (height < 0) {
+        throw new TypeError(`The rectangle height must be a non-negative number, ${height} was provided`);
+      }
+    }
+  }
+
+  get area(): number {
+    return this.width * this.height;
+  }
+}
