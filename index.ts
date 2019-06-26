@@ -33,14 +33,6 @@ class Rectangle implements IRectangle {
     public readonly width: number,
     public readonly height: number,
   ) {
-    if (typeof process === "object" && process && process.env && process.env.NODE_ENV !== "production") {
-      if (width < 0) {
-        throw new TypeError(`The rectangle width must be a non-negative number, ${width} was provided`);
-      }
-      if (height < 0) {
-        throw new TypeError(`The rectangle height must be a non-negative number, ${height} was provided`);
-      }
-    }
   }
 
   get area(): number {
