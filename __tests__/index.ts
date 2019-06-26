@@ -71,9 +71,67 @@ describe("rectangle-overlap", () => {
     }
   });
 
+  it("should return correct intersections for rectangles intersecting from one side", () => {
+    for (let i = 0; i < 100; i++) {
+      const topRectangle = {
+        x: 10,
+        y: -100,
+        width: 10,
+        height: 100 + i,
+      };
+      expect(getOverlapWithContainer(topRectangle)).toEqual({
+        x: 10,
+        y: 0,
+        width: 10,
+        height: i,
+        area: 10 * i,
+      });
+      const rightRectangle = {
+        x: 100 - i,
+        y: 10,
+        width: 100,
+        height: 10,
+      };
+      expect(getOverlapWithContainer(rightRectangle)).toEqual({
+        x: 100 - i,
+        y: 10,
+        width: i,
+        height: 10,
+        area: i * 10,
+      });
+      const bottomRectangle = {
+        x: 10,
+        y: 100 - i,
+        width: 10,
+        height: 100,
+      };
+      expect(getOverlapWithContainer(bottomRectangle)).toEqual({
+        x: 10,
+        y: 100 - i,
+        width: 10,
+        height: i,
+        area: 10 * i,
+      });
+      const leftRectangle = {
+        x: -100,
+        y: 10,
+        width: 100 + i,
+        height: 10,
+      };
+      expect(getOverlapWithContainer(leftRectangle)).toEqual({
+        x: 0,
+        y: 10,
+        width: i,
+        height: 10,
+        area: i * 10,
+      });
+    }
+  });
+
   function getOverlapWithContainer(
     rectangle: IRectangle,
   ): null | {x: number, y: number, width: number, height: number, area: number} {
-    return overlap(rectangle, container);
+    const rectangleOverlap = overlap(rectangle, container);
+    return rectangleOverlap && Object.assign({}, rectangleOverlap, {area: rectangleOverlap.area});
   }
 });
