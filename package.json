@@ -1,6 +1,6 @@
 {
   "name": "rectangle-overlap",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Computes the area of the intersection of two rectangles.",
   "main": "index.js",
   "types": "index.d.ts",
