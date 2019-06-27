@@ -185,6 +185,54 @@ describe("rectangle-overlap", () => {
     }
   });
 
+  it("should return correct intersection for rectangles overlapping the container vertically", () => {
+    const rectangle = {
+      x: 10,
+      y: -100,
+      width: 10,
+      height: 300,
+    };
+    expect(getOverlapWithContainer(rectangle)).toEqual({
+      x: 10,
+      y: 0,
+      width: 10,
+      height: 100,
+      area: 1000,
+    });
+  });
+
+  it("should return correct intersection for rectangles overlapping the container horizontally", () => {
+    const rectangle = {
+      x: -100,
+      y: 10,
+      width: 300,
+      height: 10,
+    };
+    expect(getOverlapWithContainer(rectangle)).toEqual({
+      x: 0,
+      y: 10,
+      width: 100,
+      height: 10,
+      area: 1000,
+    });
+  });
+
+  it("should return correct intersection for rectangles covering other rectangles", () => {
+    const rectangle = {
+      x: -100,
+      y: -100,
+      width: 300,
+      height: 300,
+    };
+    expect(getOverlapWithContainer(rectangle)).toEqual({
+      x: 0,
+      y: 0,
+      width: 100,
+      height: 100,
+      area: 10000,
+    });
+  });
+
   it("should return the correct overlap for 0-sized rectangles", () => {
     expect(getOverlapWithContainer({x: 10, y: 10, width: 0, height: 0})).toEqual({
       x: 10,
