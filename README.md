@@ -3,6 +3,7 @@
 [![TypeScript support](https://img.shields.io/npm/types/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/index.ts)
 [![License](https://img.shields.io/npm/l/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/lovasoa/rectangle-overlap.svg?branch=master)](https://travis-ci.org/lovasoa/rectangle-overlap)
+![gzipped size](https://img.shields.io/bundlephobia/minzip/rectangle-overlap.svg?label=gzip%20size)
 
 Fastly compute the intersection of two rectangles.
 
