@@ -9,7 +9,7 @@
     "build": "rm -rf dist/ && npm run compile && cp LICENSE README.md package.json dist/",
     "compile": "tsc --project .",
     "test": "npx tslint --project . && npx jest && npx stryker run",
-    "prepublish": "echo 'Use npm run publish-package' && exit 1",
+    "prepublishOnly": "echo 'Use npm run publish-package' && exit 1",
     "publish-package": "npm run check-workspace && npm test && npm run build && git push && git push --tags && npm publish --access=public --ignore-scripts dist"
   },
   "repository": {
