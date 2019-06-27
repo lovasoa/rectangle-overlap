@@ -128,6 +128,105 @@ describe("rectangle-overlap", () => {
     }
   });
 
+  it("should return correct intersections for rectangles intersecting from one corner", () => {
+    for (let i = 0; i < 100; i++) {
+      const nwRectangle = {
+        x: -100,
+        y: -100,
+        width: 100 + i,
+        height: 100 + i,
+      };
+      expect(getOverlapWithContainer(nwRectangle)).toEqual({
+        x: 0,
+        y: 0,
+        width: i,
+        height: i,
+        area: i ** 2,
+      });
+      const neRectangle = {
+        x: 100 - i,
+        y: -100,
+        width: 100,
+        height: 100 + i,
+      };
+      expect(getOverlapWithContainer(neRectangle)).toEqual({
+        x: 100 - i,
+        y: 0,
+        width: i,
+        height: i,
+        area: i ** 2,
+      });
+      const seRectangle = {
+        x: 100 - i,
+        y: 100 - i,
+        width: 100,
+        height: 100,
+      };
+      expect(getOverlapWithContainer(seRectangle)).toEqual({
+        x: 100 - i,
+        y: 100 - i,
+        width: i,
+        height: i,
+        area: i ** 2,
+      });
+      const swRectangle = {
+        x: -100,
+        y: 100 - i,
+        width: 100 + i,
+        height: 100,
+      };
+      expect(getOverlapWithContainer(swRectangle)).toEqual({
+        x: 0,
+        y: 100 - i,
+        width: i,
+        height: i,
+        area: i ** 2,
+      });
+    }
+  });
+
+  it("should return the correct overlap for 0-sized rectangles", () => {
+    expect(getOverlapWithContainer({x: 10, y: 10, width: 0, height: 0})).toEqual({
+      x: 10,
+      y: 10,
+      width: 0,
+      height: 0,
+      area: 0,
+    });
+
+    expect(getOverlapWithContainer({x: 10, y: 10, width: 80, height: 0})).toEqual({
+      x: 10,
+      y: 10,
+      width: 80,
+      height: 0,
+      area: 0,
+    });
+
+    expect(getOverlapWithContainer({x: -10, y: 10, width: 120, height: 0})).toEqual({
+      x: 0,
+      y: 10,
+      width: 100,
+      height: 0,
+      area: 0,
+    });
+
+    expect(getOverlapWithContainer({x: 10, y: 10, width: 0, height: 80})).toEqual({
+      x: 10,
+      y: 10,
+      width: 0,
+      height: 80,
+      area: 0,
+    });
+
+    expect(getOverlapWithContainer({x: 10, y: -10, width: 0, height: 120})).toEqual({
+      x: 10,
+      y: 0,
+      width: 0,
+      height: 100,
+      area: 0,
+    });
+  });
+
   function getOverlapWithContainer(
     rectangle: IRectangle,
   ): null | {x: number, y: number, width: number, height: number, area: number} {
