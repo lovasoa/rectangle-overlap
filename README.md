@@ -1,11 +1,26 @@
 # rectangle-overlap
 
-Fastly compute the area of the intersection of two rectangles.
+[![TypeScript support](https://img.shields.io/npm/types/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/index.ts)
+[![License](https://img.shields.io/npm/l/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/LICENSE)
+
+Fastly compute the intersection of two rectangles.
 
 ## Usage
 
 ```js
-var area = require("rectangle-overlap");
+const intersection = require("rectangle-overlap");
 
-area(rect1.x, rect1.y, rect1.w, rect1.h, rect2.x, rect2.y, rect2.w, rect2.h); 
+let rect1 = {x: 0, y: 0, width: 10, height: 10};
+let rect2 = {x: 2, y: 3, width: 42, height: 42};
+
+const overlap = intersection(rect1, rect2);
+
+if (overlap) {
+  console.log(`The rectangles overlap over an area of ${overlap.area}`);
+  console.log(
+    `Intersection coordinates: x=${overlap.x}, y=${overlap.y}, width=${overlap.width}, height=${overlap.height}`,
+  )
+} else {
+  console.log("The rectangles do not overlap");
+}
 ```
