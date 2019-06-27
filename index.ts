@@ -1,4 +1,4 @@
-export = (rectangle1: IRectangle, rectangle2: IRectangle): null | Rectangle => {
+function getOverlap(rectangle1: IRectangle, rectangle2: IRectangle): null | Rectangle {
   const intersectionX1 = Math.max(rectangle1.x, rectangle2.x);
   const intersectionX2 = Math.min(rectangle1.x + rectangle1.width, rectangle2.x + rectangle2.width);
   if (intersectionX2 < intersectionX1) {
@@ -17,7 +17,8 @@ export = (rectangle1: IRectangle, rectangle2: IRectangle): null | Rectangle => {
     intersectionX2 - intersectionX1,
     intersectionY2 - intersectionY1,
   );
-};
+}
+export = getOverlap;
 
 interface IRectangle {
   readonly x: number;
