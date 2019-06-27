@@ -279,6 +279,8 @@ describe("rectangle-overlap", () => {
     rectangle: IRectangle,
   ): null | {x: number, y: number, width: number, height: number, area: number} {
     const rectangleOverlap = overlap(rectangle, container);
+    const swappedRectanglesOverlap = overlap(container, rectangle);
+    expect(rectangleOverlap).toEqual(swappedRectanglesOverlap);
     return rectangleOverlap && Object.assign({}, rectangleOverlap, {area: rectangleOverlap.area});
   }
 });
