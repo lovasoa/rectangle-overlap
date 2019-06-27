@@ -3,43 +3,24 @@
 [![TypeScript support](https://img.shields.io/npm/types/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/index.ts)
 [![License](https://img.shields.io/npm/l/rectangle-overlap.svg)](https://github.com/lovasoa/rectangle-overlap/blob/master/LICENSE)
 
-Fastly compute the area of the intersection of two rectangles.
+Fastly compute the intersection of two rectangles.
 
 ## Usage
 
 ```js
 const intersection = require("rectangle-overlap");
 
-let rect1 = {
-  x: 100,
-  y: 100,
-  w: 100,
-  h: 100,
-};
-let rect2 = {
-  x: 50,
-  y: 50,
-  w: 100,
-  h: 100,
-};
-// rectangles overlap partially
-intersection(rect1.x, rect1.y, rect1.w, rect1.h, rect2.x, rect2.y, rect2.w, rect2.h); // 2500
+let rect1 = {x: 0, y: 0, width: 10, height: 10};
+let rect2 = {x: 2, y: 3, width: 42, height: 42};
 
-let rect3 = {
-  x: 150,
-  y: 150,
-  w: 0,
-  h: 0,
-};
-// rect3 has area 0
-intersection(rect1.x, rect1.y, rect1.w, rect1.h, rect3.x, rect3.y, rect3.w, rect3.h); // 0
+const overlap = intersection(rect1, rect2);
 
-let rect4 = {
-  x: 0,
-  y: 0,
-  w: 10,
-  h: 10,
-};
-// non-intersecting rectangles
-intersection(rect1.x, rect1.y, rect1.w, rect1.h, rect4.x, rect4.y, rect4.w, rect4.h); // null
+if (overlap) {
+  console.log(`The rectangles overlap over an area of ${overlap.area}`);
+  console.log(
+    `Intersection coordinates: x=${overlap.x}, y=${overlap.y}, width=${overlap.width}, height=${overlap.height}`,
+  )
+} else {
+  console.log("The rectangles do not overlap");
+}
 ```
